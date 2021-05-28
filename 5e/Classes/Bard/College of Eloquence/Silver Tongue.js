@@ -23,7 +23,6 @@ new Dialog({
 		let skill = html.find('#skill')[0].value;
 		let form = "+ @skills." + skill + ".total";
 		let dice = choice == `adv` ? `{2d20kh ${form},10}kh` : choice == `nor` ? `{1d20 ${form},10}kh` : `{2d20kl ${form},10}kh`;
-//		let dice = choice == `adv` ? `{2d20kh @skills.${skill}.total,10}kh` : choice == `nor` ? `{1d20 @skills.${skill}.total,10}kh` : `{2d20kl @skills.${skill}.total,10}kh`;
 		let skill_type = skill == `per` ? `Persuasion` : `Deception`;
 		let roll_type = choice == `adv` ? `(Advantage)` : choice == `dis` ? `(Disadvantage)` : ``;
 		let roll = new Roll(dice, actorD.getRollData()).roll();		
