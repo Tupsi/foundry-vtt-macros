@@ -1,12 +1,12 @@
-//##################################################################
+//##############################################
 // Read First!!!!!!!!!!!!!!!!!
 // Midi-qol "On Use" macro
 // Thanks to Kekilla for the clean dialog
 // Original version from Crymic
 // changes to Crymics version
 // - fix for mido-qol option GM-only saves
-// - fix for no skill bonus added (+ was missing in formula) 
-//##################################################################
+// - fix for skill bonus added (+ was missing in formula and it was in the wrong place) 
+//#############################################
 (async()=>{
 let actorD = game.actors.get(args[0].actor._id);
 let choice = "";
@@ -21,8 +21,8 @@ new Dialog({
 	},
 	close : (html) => {
 		let skill = html.find('#skill')[0].value;
-		let form = "+ @skills." + skill + ".total";
-		let dice = choice == `adv` ? `{2d20kh ${form},10}kh` : choice == `nor` ? `{1d20 ${form},10}kh` : `{2d20kl ${form},10}kh`;
+		let form = " + @skills." + skill + ".total";
+		let dice = choice == `adv` ? `{2d20kh,10}kh${form}` : choice == `nor` ? `{1d20,10}kh${form}` : `{2d20kl,10}kh${form}`;
 		let skill_type = skill == `per` ? `Persuasion` : `Deception`;
 		let roll_type = choice == `adv` ? `(Advantage)` : choice == `dis` ? `(Disadvantage)` : ``;
 		let roll = new Roll(dice, actorD.getRollData()).roll();		
